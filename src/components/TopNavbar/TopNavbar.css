@@ -1,0 +1,20 @@
+.LogoBanner {
+    width: 200px;
+    margin-right:50px;
+}
+
+.nav-link {
+    color: black !important;
+    font-size: 20px !important;
+    font-family: 'calibri';
+    font-weight: 600 !important;
+    text-decoration: none;
+    margin: 0 10px;
+    border-radius: 10px;
+}
+
+.nav-link:hover {
+    color: #F4CE14 !important;
+    text-decoration: none;
+    background-color: #495e57;;
+}

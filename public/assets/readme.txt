@@ -1,0 +1,1 @@
+This assets folder is neccessary due to Create-React-App not liking realative paths.
