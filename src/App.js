@@ -1,38 +1,50 @@
 import './App.css';
-import { MainPage, BookingsPage } from './pages';
+import { MainPage, BookingsPage, ConfirmedBooking } from './pages';
 import { TopNavbar, Footer } from './components';
-import { Route, RouterProvider, Outlet, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import { Route, Outlet, Routes, useNavigate, } from 'react-router-dom';
 import { useState, useReducer } from 'react';
+import {fetchAPI, submitAPI} from './mockAPI.js'
+// import useFetch from './hooks/useFetch.js'
 
 function App() {
-  const defaultTimes=[3,4,5,6,7,8]
+  //Creates initial state for availableTimes
+  let currentDate= new Date()
+  let formattedDate=  currentDate.toISOString().substring(0,10);
+  let initializeTimes = () => {
+    // const {loading, error, data } = useFetch('')
+    return(fetchAPI(currentDate));
+  }
 
-  const [date, setDate] = useState();
+  //Reducer Function specifies how the state gets updated (takes state and action) returns next state
+  //Action by convention is an object with a type property { type: 'update_times' }
+  let updateTimes = (state, action) => {
+    // console.log(action)
+    switch (action.type) {
+      case 'update_times':
+        setDate(action.payload)
+        return fetchAPI(new Date(action.payload))
+      default:
+        return state;
+    }
+  }
+
+  const navigate = useNavigate();
+
+  let submitForm = (name, date, time, guests, occasion) => {
+    navigate('/ConfirmedBooking')
+    submitAPI(name, date, time, guests, occasion);
+  }
+
+  const [name, setName] = useState("");
+  const [date, setDate] = useState(formattedDate);
   const [time, setTime] = useState("3:00 PM");
   const [guests, setGuests] = useState("1");
   const [occasion, setOccasion] = useState("Standard Dinner");
-  const [availableTimes, setAvailableTimes] = useState(defaultTimes)
-  // const [availableTimes, setAvailableTimes] = useReducer(defaultTimes)
-
-  // The next step is to prepare the available times to be updated based on the date the user has selected. To do this, you will change the availableTimes state to a reducer.
-
-  // In the Main component, create a function named updateTimes which will handle the state change. This function will change the availableTimes based on the selected date. For now, the function can return the same available times regardless of the date.
-
-  // Next, create a function called initializeTimes which will create the initial state for the availableTimes.
-
-  // Then, change availableTimes to a reducer using the useReducer function and provide the two previous functions as parameters.
+  // const [state, dispatch] = useReducer(reducer, initialState)
+  const [availableTimes, dispatchAvailableTimes] = useReducer(updateTimes, initializeTimes())
 
   // Update the BookingForm component to dispatch the state change when the date form field is changed.
-
   // Tip: Include the newly selected date in the dispatch parameter.
-  
-  let initializeTimes = () => {
-    return defaultTimes;
-  }
-
-  let updateTimes = (changedTime) => {
-    // setAvailableTimes()
-  }
 
   const Root = () => {
     return (
@@ -43,20 +55,16 @@ function App() {
       </>
     );
   };
-  
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path="/" element={<Root />}>
-        <Route index element={<MainPage />} />
-        <Route path="/Bookings" element={<BookingsPage date={date} setDate={setDate} time={time} setTime={setTime} availableTimes={availableTimes} setAvailableTimes={setAvailableTimes} guests={guests} setGuests={setGuests} occasion={occasion} setOccasion={setOccasion}/>}>
-        </Route>
-      </Route>
-    )
-  );
 
   return (
     <div className="App">
-      <RouterProvider router={router} />
+      <Routes>
+        <Route path="/" element={<Root />}>
+          <Route index element={<MainPage />} />
+            <Route path="/Bookings" element={<BookingsPage name={name} setName={setName} date={date} setDate={setDate} time={time} setTime={setTime} availableTimes={availableTimes} dispatchAvailableTimes={dispatchAvailableTimes} guests={guests} setGuests={setGuests} occasion={occasion} setOccasion={setOccasion} submitForm={submitForm}/>} />
+            <Route path="/ConfirmedBooking" element={<ConfirmedBooking name={name} setName={setName} date={date} setDate={setDate} time={time} setTime={setTime} availableTimes={availableTimes} dispatchAvailableTimes={dispatchAvailableTimes} guests={guests} setGuests={setGuests} occasion={occasion} setOccasion={setOccasion} submitForm={submitForm}/>} />
+        </Route>
+      </Routes>
     </div>
   );
 }

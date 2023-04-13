@@ -1,0 +1,15 @@
+.booking-container{
+    display: grid;
+    color: #F4CE14;
+    font-size: 24px;
+    align-items: center;
+    justify-content: center;
+}
+
+.bookinglabel {
+    font-size: 32px;
+}
+
+.bookinglabel:nth-child(n+2) {
+    margin-top: 20px;
+}

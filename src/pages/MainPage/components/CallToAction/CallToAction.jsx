@@ -24,7 +24,7 @@ export function CallToAction(props) {
                     We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.
                 </p>
                 <div className='Action-Container'>
-                    <LemonButton text={"Reserve a Table"}/>
+                    <LemonButton text={"Reserve a Table"} link="/Bookings"/>
                 </div>
             </div>
             <div className='Action-flex'>

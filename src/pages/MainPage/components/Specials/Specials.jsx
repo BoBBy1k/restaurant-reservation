@@ -18,8 +18,8 @@ export function Specials(props) {
                 </div>
             </div>
             <div className='Specials-img-Container'>
-            {SpecialsList.map( (special) => 
-                <div className='Specials-img-flex'>
+            {SpecialsList.map( (special, index) => 
+                <div className='Specials-img-flex' key={index}>
                     <SpecialCard image={special.image} imageAlt={special.imageAlt} title={special.title} price={special.price} text={special.text} link={special.link}/>
                 </div>
             )}

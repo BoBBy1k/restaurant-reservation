@@ -1,11 +1,11 @@
 import React from 'react'
 
-export function ConfirmationPage(props) {
+export function ConfirmedBooking(props) {
     
 
     return (
         <>
-            ConfirmationPage
+            ConfirmedBooking
         </>
     )
 }
