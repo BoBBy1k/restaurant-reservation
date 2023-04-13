@@ -13,7 +13,7 @@ export function TopNavbar(props) {
                 <Navbar bg="light" expand="sm" >
                     <Container style={{maxWidth:"auto"}}>
                         <LinkContainer to="/">
-                            <Navbar.Brand><img src={logo} className="LogoBanner" alt="logo" /></Navbar.Brand>
+                            <Navbar.Brand><img src={logo} className="LogoBanner" alt="logo" aria-label="Navbar Icon Home"/></Navbar.Brand>
                         </LinkContainer>
                         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                         <Navbar.Collapse id="basic-navbar-nav">

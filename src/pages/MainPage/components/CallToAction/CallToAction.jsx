@@ -1,7 +1,7 @@
 import React from 'react'
 import "./CallToAction.css"
 import { Image } from 'react-bootstrap';
-import ActionImg from './assets/action.jpg'
+import ActionImg from './assets/action.webp'
 import { LemonButton } from '../../../../components/'
 
 //sometimes referred to as the jumbotron or the hero, 
@@ -10,7 +10,6 @@ import { LemonButton } from '../../../../components/'
 
 export function CallToAction(props) {
     
-
     return (
         <section className='Action-Container'>
             <div className='Action-flex'>

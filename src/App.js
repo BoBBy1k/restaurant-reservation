@@ -9,7 +9,6 @@ import {fetchAPI, submitAPI} from './mockAPI.js'
 function App() {
   //Creates initial state for availableTimes
   let currentDate= new Date()
-  let formattedDate=  currentDate.toISOString().substring(0,10);
   let initializeTimes = () => {
     // const {loading, error, data } = useFetch('')
     return(fetchAPI(currentDate));
@@ -21,6 +20,7 @@ function App() {
     // console.log(action)
     switch (action.type) {
       case 'update_times':
+        setTime("")
         setDate(action.payload)
         return fetchAPI(new Date(action.payload))
       default:
@@ -36,8 +36,8 @@ function App() {
   }
 
   const [name, setName] = useState("");
-  const [date, setDate] = useState(formattedDate);
-  const [time, setTime] = useState("3:00 PM");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
   const [guests, setGuests] = useState("1");
   const [occasion, setOccasion] = useState("Standard Dinner");
   // const [state, dispatch] = useReducer(reducer, initialState)

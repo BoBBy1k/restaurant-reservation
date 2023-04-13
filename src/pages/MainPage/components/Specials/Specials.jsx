@@ -8,7 +8,7 @@ import { SpecialsList } from './SpecialsList'
 export function Specials(props) {
 
     return (
-        <section>
+        <section id="Menu">
             <div className='Specials-Container'>
                 <div className='Specials-flex' style={{ textAlign: "center"}}>
                     This Weeks Specials!

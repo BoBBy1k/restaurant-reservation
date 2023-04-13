@@ -4,25 +4,27 @@ import { LemonButton } from "../../../../components/"
 import './BookingForm.css'
 
 export function BookingForm( { name, setName, date, setDate, time, setTime, availableTimes, dispatchAvailableTimes, guests, setGuests, occasion, setOccasion, submitForm}, props) {
-
+    let currentDate= new Date();
+    currentDate = new Date(currentDate.setDate(currentDate.getDate() + 1)).toISOString().split('T')[0];
+    
     return (
             <form key="booking-container" className="booking-container">
-                <label className ="bookinglabel" htmlFor ="res-name">Reservation Name</label>
+                {name 
+                    ? <label className ="bookinglabel" htmlFor ="res-name">Reservation Name</label>
+                    : <label className ="bookinglabel" htmlFor ="res-name" style={{color:"red"}}>- Reservation Name -</label>
+                }
                 <input key="NameFieldNeedsFocusFixing" type="text" id="res-name" value={name} onChange={e => setName(e.target.value)} autoFocus="autoFocus"/>
-                <label className ="bookinglabel" htmlFor ="res-date">Date</label>
-                <input type="date" id="res-date" value={date} onChange={e => dispatchAvailableTimes({type: 'update_times', payload: e.target.value}) } />
-                <label className ="bookinglabel" htmlFor ="res-time">Available Times</label>
+                {date 
+                    ? <label className ="bookinglabel" htmlFor ="res-date">Date</label>
+                    : <label className ="bookinglabel" htmlFor ="res-date" style={{color:"red"}}>- Date -</label>
+                }
+                <input type="date" min={currentDate} id="res-date" value={date} onChange={e => dispatchAvailableTimes({type: 'update_times', payload: e.target.value}) } />
+                {time 
+                    ? <label className ="bookinglabel" htmlFor ="res-time">Available Times</label>
+                    : <label className ="bookinglabel" htmlFor ="res-time" style={{color:"red"}}>- Available Times -</label>
+                }
                 <select id="res-time " value={time} onChange={e => setTime(e.target.value)}>
-                    {
-                    availableTimes 
-                    ? availableTimes.map( (item,index) => 
-                        {  
-                            // console.log(item) Needs to parse both sides of the semicolon using regex - implement later
-                            // let usTime = parseFloat(item) - 12 + "PM"
-                            return(<option key={index}>{item}</option>)
-                        }) 
-                    : null 
-                    }
+                    { availableTimes ? availableTimes.map( (item,index) => { return(<option key={index}>{item}</option>) }) : null }
                 </select>
                 <label className ="bookinglabel" htmlFor ="guests">Number of Guests</label>
                 <input type="number" placeholder="1" min="1" max="10" id="guests" value={guests} onChange={e => setGuests(e.target.value)}/>

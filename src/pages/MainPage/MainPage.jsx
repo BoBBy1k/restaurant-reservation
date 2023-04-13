@@ -8,8 +8,8 @@ export function MainPage(props) {
         <article>
             <section.CallToAction />
             <section.Specials />
-            <section.Testimonials />
-            <section.About />
+            {/* <section.Testimonials />
+            <section.About /> */}
         </article>
     )
 }

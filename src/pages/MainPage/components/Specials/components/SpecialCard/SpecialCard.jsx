@@ -3,7 +3,7 @@ import { LemonButton } from '../../../../../../components'
 
 //props list: image={}, imageAlt={""}, title={""}, price={""}, text={""}, link={""}
 export function SpecialCard(props) {
-    console.log(props.image)
+
     return (
         <div className="card" style={{width: "18rem", border:"none", backgroundColor:"#EDEFEE", borderTopLeftRadius:"8%", borderTopRightRadius:"8%" }}>
             <div className="card-body" style={{ padding:"0"}}>
