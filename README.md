@@ -1,11 +1,13 @@
-# Little Lemon Reservation Project for Meta Frontend Capstone
+# Little Lemon Reservation MVP
 
 This is a simple Reservation Page with client-side form validation implemented into a mockup of a restaurant site with a focus on mobile-first responsive design. The project uses a "Barrel Exports" Folder structure allowing increased modularity.
 
 
-
 Read more about it in this blog:
 https://blog.logrocket.com/using-barrel-exports-organize-react-components/
+
+
+
 
 
 
