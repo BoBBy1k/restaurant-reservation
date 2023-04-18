@@ -1,6 +1,6 @@
 # Little Lemon Reservation Project for Meta Frontend Capstone
 
-This is a simple Reservation Page with client-side form validation implemented into a mockup of a restaurant site with a focus on mobile-first responsive design. The project uses a "Barrel" Exports Folder structure allowing increased modularity.
+This is a simple Reservation Page with client-side form validation implemented into a mockup of a restaurant site with a focus on mobile-first responsive design. The project uses a "Barrel Exports" Folder structure allowing increased modularity.
 
 
 
