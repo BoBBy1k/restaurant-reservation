@@ -1,5 +1,7 @@
 # Little Lemon Reservation MVP
 
+This Project is still a WIP. More design elements will be added to the mockup.
+
 This is a simple Reservation Page with client-side form validation implemented into a mockup of a restaurant site with a focus on mobile-first and responsive design. The project uses a "Barrel Exports" Folder structure allowing increased modularity.
 
 Technologies used: React, React Router, Bootstrap
