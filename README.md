@@ -1,6 +1,10 @@
 # Little Lemon Reservation Project for Meta Frontend Capstone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple Reservation Page with client-side form validation implemented into a mockup of a restaurant site.
+
+
+
+
 
 ## Available Scripts
 
